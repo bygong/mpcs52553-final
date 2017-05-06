@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body { width: 960px; margin: 15px auto; font-family: 'Roboto', sans-serif; font-size: 18px; }
+input, select { font-size: 18px; padding: 6px; }
+table { width: 100%; border-collapse: collapse;}
+th { border-bottom: solid 1px #999; padding: 12px 0px; }
+td { padding: 12px; text-align: center;}
+tbody tr:nth-of-type(odd) { background-color: #f0f0f0; }
+th, td { border: 1px solid #ddd }
+img { box-shadow: 9px 9px 9px #777;}
+
+.notice {
+  background-color: #447a0d;
+  padding: 12px;
+  color: #FFF;
+  border-radius: 8px;
+}
+
+label {
+  width: 150px;
+  text-align: left;
+  display: inline-block;
+  padding-right: 12px;
+}
+
+a.button, input[type="submit" i] {
+  background: #11639f;
+  padding: 12px;
+  color: #FFF;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #701515;
+    font-size: 24px;
+
+}
+
+navbar ul li {
+    float: left;
+    color: #FFF;
+    vertical-align: middle;
+}
+
+.pull-right {
+  float: right;
+}
+
+li.brand a:-webkit-any-link {
+  color: yellow;
+  padding-right: 96px;
+  font-variant: small-caps;
+}
+navbar ul li a {
+    display: block;
+}
+
+navbar ul li a:-webkit-any-link {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: #FFF;
+    vertical-align: middle;
+}
+
+navbar ul li a:hover {
+  color: yellow;
+}

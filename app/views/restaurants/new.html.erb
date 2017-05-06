@@ -1,0 +1,23 @@
+<h3>Add Restaurant</h3>
+
+<%= form_tag "/restaurants" do %>
+
+  <p>
+    <%= label_tag "name" %>
+    <%= text_field_tag "name" %>
+  </p>
+
+  <p>
+    <%= label_tag "tables in total" %>
+    <%= text_field_tag "table_number" %>
+  </p>
+
+  <p>
+      <%= submit_tag "Add Restaurant", class: 'button' %>
+
+      or
+
+      <%= link_to "Cancel", "/flights" %>
+  </p>
+
+<% end %>

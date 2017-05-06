@@ -1,0 +1,42 @@
+<%= form_tag "/flights/#{@flight.id}", method: 'patch' do %>
+
+  <p>
+    <%= label_tag "leaves_on" %>
+    <%= text_field_tag "leaves_on", @flight.leaves_on %>
+  </p>
+
+  <p>
+    <%= label_tag "flight_number" %>
+    <%= text_field_tag "flight_number", @flight.flight_number %>
+  </p>
+
+  <p>
+    <%= label_tag "destination" %>
+    <%= text_field_tag "destination", @flight.destination %>
+  </p>
+
+  <p>
+    <%= label_tag "departure_time" %>
+    <%= text_field_tag "departure_time", @flight.departure_time %>
+  </p>
+
+  <p>
+    <%= label_tag "duration" %>
+    <%= text_field_tag "duration", @flight.duration %>
+  </p>
+
+  <p>
+    <%= label_tag "arrival_time" %>
+    <%= text_field_tag "arrival_time", @flight.arrival_time %>
+  </p>
+
+  <p>
+    <%= label_tag "earned_miles" %>
+    <%= text_field_tag "earned_miles", @flight.earned_miles %>
+  </p>
+
+  <p>
+      <%= submit_tag %>
+  </p>
+
+<% end %>

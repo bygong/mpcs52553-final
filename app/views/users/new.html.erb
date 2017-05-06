@@ -1,0 +1,29 @@
+<h3>Sign Up</h3>
+
+<ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+
+<%= form_tag "/users" do %>
+
+  <p>
+    <%= label_tag "name" %>
+    <%= text_field_tag "name", @user.name %>
+  </p>
+
+  <p>
+    <%= label_tag "password" %>
+    <%= text_field_tag "password", @user.password %>
+  </p>
+
+  <p>
+      <%= submit_tag "Sign Me Up", class: 'button' %>
+
+      or
+
+      <%= link_to "Cancel", "/reservations" %>
+  </p>
+
+<% end %>

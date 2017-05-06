@@ -1,0 +1,24 @@
+Restaurant:
+  name: text
+  table_number: integer
+
+User:
+  name: text
+  password: text
+  points: integer
+  email_address: text
+
+Administrator:
+  name: text
+  password: text
+
+Reservation:
+  size: text
+  review: text
+  timesegment_id: integer
+  user_id: integer
+
+Timesegment:
+  restaurant_id: integer
+  time: integer
+  date: text
