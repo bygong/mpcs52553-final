@@ -1,20 +1,11 @@
 # MPCS 52553 - Final Project Starting Point
 
-* Download the ZIP of this repository to start your project.  
-* Rename your folder to `mpcs52553-final`
+# May 6 2017
 
-<hr>
+# Benyan Gong
 
-Or, you can create a new Rails app yourself and follow these steps:
+1. My structure and MaroonAir's are prettly alike since they are similar on data pattern and I learned a lot from MaroonAir.
 
-1. Generate a new Rais app: `rails new mpcs52553-final --skip-bundle`
-2. Add `gem 'ez'` inside the `Gemfile`
-3. `bundle install`
-4. Then customize the `config/development.rb` as follows:
+2. Essentially I have "restaurant", "user", "timesegment" models, I also provide a MaroonAir-like interface to check on them. A intermediate class "reservation" connects user and timesegment but I havn't figured out how to present them in a clear way, so this page wouldn't work.
 
-    ```
-      config.assets.debug = false
-      config.assets.digest = false
-    ```
-
-Now you can start developing.  Happy coding!
+3. So my idea is to have many timesegement as a main connection between restaurant and reservations. A timesegment represented by the restaurant it belongs to and all the reservation it has. Reservation is one customer to one segement. Restaurants have same timesegements on time dimension.   
