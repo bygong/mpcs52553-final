@@ -1,0 +1,12 @@
+Milestone #1 Grade - bygong
+
+Score: (10/10)
+
+Nice work!
+
+- I would say the `Reservation` `size` should also have a presence validation.
+
+- Make sure to use the new Ruby Hash syntax: e.g., `presence: true` instead of `:presence => true`
+
+- Also, make sure to use upper case for your model names. e.g., `Timesegment` should be `TimeSegment`.
+Everywhere else, use underscores: `has_many :time_segments`
