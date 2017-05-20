@@ -4,21 +4,24 @@ Restaurant:
 
 User:
   name: text
-  password: text
+  password_digest: text
   points: integer
   email_address: text
-
-Administrator:
-  name: text
-  password: text
+  admin: boolean(false)
 
 Reservation:
   size: text
   review: text
-  timesegment_id: integer
+  time_segment_id: integer
   user_id: integer
 
-Timesegment:
+TimeSegment:
   restaurant_id: integer
+  date_segment_id: integer
   time: integer
+  table_left: integer
+  
+
+DateSegment:
+  restaurant_id: integer
   date: text

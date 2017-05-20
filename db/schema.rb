@@ -12,17 +12,18 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "administrators", force: :cascade do |t|
-    t.text "name"
-    t.text "password"
+  create_table "date_segments", force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.text    "date"
+    t.index ["restaurant_id"], name: "index_date_segments_on_restaurant_id"
   end
 
   create_table "reservations", force: :cascade do |t|
     t.text    "size"
     t.text    "review"
     t.integer "user_id"
-    t.integer "timesegment_id"
-    t.index ["timesegment_id"], name: "index_reservations_on_timesegment_id"
+    t.integer "time_segment_id"
+    t.index ["time_segment_id"], name: "index_reservations_on_time_segment_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -31,18 +32,21 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "table_number"
   end
 
-  create_table "timesegments", force: :cascade do |t|
+  create_table "time_segments", force: :cascade do |t|
     t.integer "restaurant_id"
     t.integer "time"
-    t.text    "date"
-    t.index ["restaurant_id"], name: "index_timesegments_on_restaurant_id"
+    t.integer "date_segment_id"
+    t.integer "table_left"
+    t.index ["date_segment_id"], name: "index_time_segments_on_date_segment_id"
+    t.index ["restaurant_id"], name: "index_time_segments_on_restaurant_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.text    "name"
-    t.text    "password"
     t.integer "points"
     t.text    "email_address"
+    t.text    "password_digest"
+    t.boolean "admin",           default: false
   end
 
 end

@@ -1,0 +1,28 @@
+<h3>New reservation</h3>
+<% restaurant = Restaurant.find_by(id: @date.restaurant_id) %>
+
+<%= form_tag "/reservations" do %>
+
+  <p>
+    <%= label_tag "Restaurant" %>   <%= restaurant.name %>
+  </p>
+
+  <p>
+    <%= label_tag "Time" %>
+    <%= select_tag "time", options_from_collection_for_select(@date.time_segments,'id','time'), multiple: false %> : 00
+  </p>
+
+  <p>
+    <%= label_tag "Size" %>
+    <%= select_tag "size", options_for_select((1..10)), multiple: false %>
+  </p>
+
+  <p>
+      <%= submit_tag "Book me", class: 'button' %>
+
+      or
+
+      <%= link_to "Cancel", "/restaurants/#{restaurant.id}" %>
+  </p>
+
+<% end %>

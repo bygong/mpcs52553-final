@@ -1,0 +1,32 @@
+<h2>My Profile</h2>
+
+<%= form_tag("/users/#{@user.id}", method: "PATCH") do %>
+
+  <p><strong>
+    <%= label_tag "name" %></strong>
+    <%= text_field_tag "name", @user.name %>
+  </p>
+
+  <p><strong>
+    <%= label_tag "password" %></strong>
+    <%= password_field_tag "password", @user.password %>
+  </p>
+
+  <p><strong>
+    <%= label_tag "Email address" %></strong>
+    <%= text_field_tag "email", @user.email_address%>
+  </p>
+
+  <p><strong>
+    <%= label_tag "TinyTable Points" %>    <%= label_tag "#{@user.points}" %>
+  </strong></p>
+
+  <p>
+      <%= submit_tag "update", class: 'button' %>
+
+      or
+
+      <%= link_to "Cancel", "/reservations" %>
+  </p>
+
+<% end %>

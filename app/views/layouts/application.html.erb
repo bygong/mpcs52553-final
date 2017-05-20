@@ -17,14 +17,16 @@
         <li class="brand"><%= link_to "TinyTable", "/" %></li>
         <li><%= link_to "Restaurants", "/restaurants" %></li>
         <li><%= link_to "Reservations", "/reservations" %></li>
-        <% if cookies["user_id"].present? %>
-          <li>Hi, <%= User.find_by(id: cookies["user_id"]).name %></li>
+        <% if session["user_id"].present? %>
+          <li>Hi, <%= link_to User.find_by(id: session["user_id"]).name, "/users/#{session["user_id"]}" %></li>
         <% end %>
         
         <div class="pull-right">
           <li><%= link_to "Sign Up", "/users/new" %></li>
           <li><%= link_to "Sign In", "/login" %></li>
-          <li><%= link_to "Sign Out", "/logout" %></li>
+          <% if session["user_id"].present? %>
+            <li><%= link_to "Sign Out", "/logout" %></li>
+          <% end %>
         </div>
       </ul>
     </navbar>

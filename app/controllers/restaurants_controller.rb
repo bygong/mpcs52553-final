@@ -5,9 +5,9 @@ class RestaurantsController < ApplicationController
 
   def show
   	@restaurant = Restaurant.find_by(id: params["id"])
-    if @restaurant
-  	  cookies["restaurant_id"] = @restaurant.id
-    end
+    # if @restaurant
+  	 #  cookies["restaurant_id"] = @restaurant.id
+    # end
   end
 
   def new

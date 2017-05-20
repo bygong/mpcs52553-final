@@ -1,10 +1,7 @@
-
+<% user = User.find_by(id: session["user_id"]) %>
 
 <h3>Restaurant #<%= @restaurant.name %></h3>
 
-<p class="pull-right">
-  <%= link_to "Book This Restaurant", "/reservations?restaurant_id=#{@restaurant.id}", method: 'post', class: 'button' %>
-</p>
 
 <p><strong>Name:</strong> <%= @restaurant.name %> </p>
 <p><strong>Address: </strong> <%=  %></p>
@@ -12,10 +9,31 @@
 <p><strong>Table in total:</strong> <%= @restaurant.table_number %></p>
 
 
-<!-- <ol> -->
-  <% @restaurant.timesegments.each do |time| %>
-    <li><%= time.time %>:00 <% time.customers.each do |customer| %></li>
-    						<%=  customer.name%>
-    						<% end %>
-  <% end %>
-<!-- </ol> -->
+<table>
+    <thead>
+      <tr>
+        <% if user.present? %>
+        <th></th>
+        <% end %>
+        <th>Date</th>
+        <th>Table left</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @restaurant.date_segments.each do |date| %>
+
+        <tr>
+            <% if user.present? %>
+            <td><%= link_to "Book", "/reservations/new?date_seg=#{date.id}" %>
+            <% end %>
+            <td>
+              
+              <%= date.date %>
+
+            <td><%= date.table_left %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>

@@ -1,12 +1,18 @@
+<% user = User.find_by(id: session["user_id"]) %>
+<% if user.present? and user.admin%>
 <p><%= link_to "Add a restaurant", "/restaurants/new", class: 'button' %></p>
-
+<% else %>
+  <p></p>
+<% end %>
 
   <table>
     <thead>
       <tr>
+        <% if user.present? and user.admin%>
         <th></th>
         <th></th>
-        <th>Name</th>
+        <% end %>
+        <th></th>
         <th>Table number</th>
       </tr>
     </thead>
@@ -15,8 +21,10 @@
       <% @restaurants.each do |restaurant| %>
 
         <tr>
+            <% if user.present? and user.admin%>
             <td><%= link_to "Toast", "/restaurants/#{restaurant.id}", method: 'delete' %>
             <td><%= link_to "Edit", "/restaurants/#{restaurant.id}/edit" %>
+            <% end %>
             <td>
               
               <%= link_to "#{restaurant.name}", "/restaurants/#{restaurant.id}" %>

@@ -1,11 +1,15 @@
-# MPCS 52553 - Final Project Starting Point
+# MPCS 52553 - Final Project Milestone 2
 
-# May 6 2017
+# May 20 2017
 
 # Benyan Gong
 
-1. My structure and MaroonAir's are prettly alike since they are similar on data pattern and I learned a lot from MaroonAir.
+1. This project has almost implemented all the functionality EXCEPT administrator part. It's rough enough but those functionality works well.
 
-2. Essentially I have "restaurant", "user", "timesegment" models, I also provide a MaroonAir-like interface to check on them. A intermediate class "reservation" connects user and timesegment but I havn't figured out how to present them in a clear way, so this page wouldn't work.
+2. You have to SIGN-IN first before you can do a lot of things. I've hide many links if user not signed-in.
 
-3. So my idea is to have many timesegement as a main connection between restaurant and reservations. A timesegment represented by the restaurant it belongs to and all the reservation it has. Reservation is one customer to one segement. Restaurants have same timesegements on time dimension.   
+3. The restaurants page shows all the restaurants, click restaurant shows possible date of reservations, click on a certain date lead you to the make a reservation.
+
+4. default users already have some reservation, if you don't want to create your own account, you can use any of them. "bygong"(password "bygong") is default admin but remember that admin functionality not added yet.
+
+5. Routes might seems chaotic because I'm not quite familiar with rules...Please do give advice if any.

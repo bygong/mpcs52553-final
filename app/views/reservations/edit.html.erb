@@ -1,0 +1,12 @@
+<%= form_tag "/reservations/#{@reservation.id}", method: 'patch' do %>
+
+  <p>
+    <%= label_tag "Review" %>
+    <%= text_field_tag "review" %>
+  </p>
+
+  <p>
+      <%= submit_tag %>
+  </p>
+
+<% end %>

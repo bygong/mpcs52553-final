@@ -1,0 +1,65 @@
+<% if @user.present? and @user.admin==true %>
+<p><%= link_to "Show all reservations", "/reservations/all", class: 'button' %></p>
+<% else %>
+  <p></p>
+<% end %>
+
+<% currentTime = Time.new(2017, 6, 3) %>
+
+ <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Restaurant</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @user.reservations.reject{|t| DateSegment.find_by(id: TimeSegment.find_by(id: t.time_segment_id).date_segment_id).date <= currentTime}.each do |reservation| %>
+
+        <tr>
+            <td><%= link_to "Cancel", "/reservations/#{reservation.id}", method: 'delete' %>
+            <% time_segment = TimeSegment.find_by(id: reservation.time_segment_id) %>
+            <% date_segment = DateSegment.find_by(id: time_segment.date_segment_id) %>
+            <td><%= Restaurant.find_by(id: date_segment.restaurant_id).name %>
+            <td><%= date_segment.date %>
+            <td><%= time_segment.time %>
+            <td><%= reservation.size %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+
+  <p> -------------------Past reservation--------------------- </p>
+
+   <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Restaurant</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @user.reservations.reject{|t| DateSegment.find_by(id: TimeSegment.find_by(id: t.time_segment_id).date_segment_id).date > currentTime}.each do |reservation| %>
+
+        <tr>
+            <td><%= link_to "Write review", "/reservations/#{reservation.id}/edit" %>
+            <% time_segment = TimeSegment.find_by(id: reservation.time_segment_id) %>
+            <% date_segment = DateSegment.find_by(id: time_segment.date_segment_id) %>
+            <td><%= Restaurant.find_by(id: date_segment.restaurant_id).name %>
+            <td><%= date_segment.date %>
+            <td><%= time_segment.time %>
+            <td><%= reservation.size %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>

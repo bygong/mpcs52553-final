@@ -1,3 +1,0 @@
-class Resaturant < ApplicationRecord
-
-end
