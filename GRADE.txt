@@ -10,3 +10,16 @@ Nice work!
 
 - Also, make sure to use upper case for your model names. e.g., `Timesegment` should be `TimeSegment`.
 Everywhere else, use underscores: `has_many :time_segments`
+
+
+----------------------------------------------------------
+Milestone #2 Grade
+
+Score: (10/10)
+
+Great job!
+
+- Make sure to remove any commented out code you're no longer using.
+
+- Queries such as the following should be done from your controller, and set to an instance variable:
+  `<% time_segment = TimeSegment.find_by(id: reservation.time_segment_id) %>`
