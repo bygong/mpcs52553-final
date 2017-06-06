@@ -7,6 +7,7 @@ class ReservationsController < ApplicationController
   def create
   	time = TimeSegment.find_by(id: params["time"])
   	user = User.find_by(id: session["user_id"])
+    # if there is available table, otherwise fail it
   	if time.update_attribute(:table_left, time.table_left-1)
 	  	reservation = Reservation.new
 	  	reservation.user_id = User.find_by(id: session["user_id"]).id
@@ -15,21 +16,12 @@ class ReservationsController < ApplicationController
   	
 	  	if reservation.save
 	  		user.update_attribute(:points, user.points + reservation.size.to_i)
-	  		user.errors.full_messages.each do |message|
-  				puts message
-  			end
 	  		redirect_to "/restaurants/#{reservation.time_segment.restaurant_id}", notice: "Succeed"
 	  	else
 	  		redirect_to "/restaurants/#{reservation.time_segment.restaurant_id}", notice: "Creation Failed"	
-	  		reservation.errors.full_messages.each do |message|
-  				puts message
-  			end
   		end
   	else
   		redirect_to "/restaurants/#{reservation.time_segment.restaurant_id}", notice: "Time is full"
-  		time.errors.full_messages.each do |message|
-  			puts message
-  		end
   	end
   end
 
@@ -68,6 +60,7 @@ class ReservationsController < ApplicationController
   	end
   end
 
+  # show all reservation for administrator
   def all
     @user = User.find_by(id: session["user_id"])
     if not @user.present?

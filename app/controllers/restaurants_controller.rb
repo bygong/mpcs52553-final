@@ -5,9 +5,6 @@ class RestaurantsController < ApplicationController
 
   def show
   	@restaurant = Restaurant.find_by(id: params["id"])
-    # if @restaurant
-  	 #  cookies["restaurant_id"] = @restaurant.id
-    # end
   end
 
   def new
@@ -23,6 +20,7 @@ class RestaurantsController < ApplicationController
   	restaurant.table_number = params["table_number"].to_i
     dates = ["20170601","20170602","20170603", "20170604", "20170605", "20170606" ,"20170607"]
   	restaurant.save
+    # create the time segement
     dates.each do |m|
       dat = DateSegment.new
       dat.restaurant = restaurant
@@ -64,6 +62,7 @@ class RestaurantsController < ApplicationController
       redirect_to "/", notice: "Unauthorized"
     end
 
+    # get a list of reservations of this restaurant
     @all_reservation = []
     Reservation.all.each do |reservation|
       if reservation.time_segment.restaurant == @restaurant
@@ -86,10 +85,12 @@ class RestaurantsController < ApplicationController
       redirect_to "/", notice: "Unauthorized"
     end
 
+    # get user rank
     @rank_users = User.all.sort_by do |item|
       item.points
     end.reverse
 
+    # get restaurant rank
     restaurants = Hash.new
     Restaurant.all.each do |restaurant|
       restaurants[restaurant.name] = 0
