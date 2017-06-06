@@ -1,11 +1,12 @@
 <% user = User.find_by(id: session["user_id"]) %>
+<br>
 <% if user.present? and user.admin%>
-<p><%= link_to "Add a restaurant", "/restaurants/new", class: 'button' %></p>
+<p><%= link_to "Add a restaurant", "/restaurants/new", class: "btn btn-info" %> </p>
 <% else %>
   <p></p>
 <% end %>
 
-  <table>
+  <table class="table table-striped">
     <thead>
       <tr>
         <% if user.present? and user.admin%>

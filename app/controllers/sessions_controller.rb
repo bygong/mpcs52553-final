@@ -23,4 +23,10 @@ class SessionsController < ApplicationController
   	end
   end
 
+  def create_auth
+    user = User.from_omniauth(env["omniauth.auth"])
+    session["user_id"] = user.id
+    redirect_to '/'
+  end
+
 end

@@ -1,12 +1,13 @@
 <% if @user.present? and @user.admin==true %>
-<p><%= link_to "Show all reservations", "/reservations/all", class: 'button' %></p>
+<br>
+<p><%= link_to "Show all reservations", "/reservations/all", class: "btn btn-info"  %></p>
 <% else %>
   <p></p>
 <% end %>
 
 <% currentTime = Time.new(2017, 6, 3) %>
 
- <table>
+ <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
@@ -36,7 +37,7 @@
 
   <p> -------------------Past reservation--------------------- </p>
 
-   <table>
+   <table class="table table-striped">
     <thead>
       <tr>
         <th></th>

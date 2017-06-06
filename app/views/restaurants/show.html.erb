@@ -1,5 +1,8 @@
 <% user = User.find_by(id: session["user_id"]) %>
-
+<br>
+<% if @user.present? and @user.admin==true %>
+<p><%= link_to "All reservation", "/restaurants/#{@restaurant.id}/all_reservation", class: "btn btn-info"  %></p>
+<% end %>
 <h3>Restaurant #<%= @restaurant.name %></h3>
 
 
@@ -9,7 +12,7 @@
 <p><strong>Table in total:</strong> <%= @restaurant.table_number %></p>
 
 
-<table>
+<table class="table table-striped">
     <thead>
       <tr>
         <% if user.present? %>

@@ -8,6 +8,9 @@ User:
   points: integer
   email_address: text
   admin: boolean(false)
+  provider: string
+  uid: string
+  image: text
 
 Reservation:
   size: text

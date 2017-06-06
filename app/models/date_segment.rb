@@ -1,6 +1,6 @@
 class DateSegment < ApplicationRecord
 	belongs_to :restaurant
-	has_many :time_segments
+	has_many :time_segments, dependent: :destroy
 	has_many :reservations, class_name: "reservation", through: :time_segments
 
 	validates :restaurant_id, :date, presence: true

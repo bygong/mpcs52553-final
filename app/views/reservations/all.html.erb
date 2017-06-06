@@ -1,0 +1,32 @@
+<% currentTime = Time.new(2017, 6, 3) %>
+
+
+<br>
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>User</th>
+        <th>Restaurant</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <%= paginate @reservations %>
+    <tbody>
+      
+      <% for reservation in @reservations.each %>
+
+        <tr>
+            <td><%= link_to "Delete", "/reservations/#{reservation[:id]}", method: 'delete' %>
+            <td><%= reservation.time_segment.restaurant.name %>
+            <td><%= reservation.time_segment.restaurant.name %>
+            <td><%= reservation.time_segment.date_segment.date %>
+            <td><%= reservation.time_segment.time.to_s %>
+            <td><%= reservation.size %></td>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>

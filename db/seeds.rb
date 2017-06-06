@@ -43,7 +43,10 @@ Restaurant.all.each do |restaurant|
       seg.date_segment = dat
       seg.table_left = restaurant.table_number-1
       seg.save
-      Reservation.create time_segment_id: seg.id, customer: User.sample, size: rand(1..6)
+      user = User.sample
+      size = rand(1..restaurant.table_number)
+      Reservation.create time_segment_id: seg.id, customer: user, size: size
+      user.update_attribute(:points,user.points+size)
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170605152953) do
 
   create_table "date_segments", force: :cascade do |t|
     t.integer "restaurant_id"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.text    "email_address"
     t.text    "password_digest"
     t.boolean "admin",           default: false
+    t.string  "provider"
+    t.string  "uid"
+    t.text    "image"
   end
 
 end

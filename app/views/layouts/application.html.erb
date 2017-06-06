@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <head>
     <title>TinyTable</title>
     <%= csrf_meta_tags %>
@@ -18,7 +25,7 @@
         <li><%= link_to "Restaurants", "/restaurants" %></li>
         <li><%= link_to "Reservations", "/reservations" %></li>
         <% if session["user_id"].present? %>
-          <li>Hi, <%= link_to User.find_by(id: session["user_id"]).name, "/users/#{session["user_id"]}" %></li>
+          <li><%= link_to "Stats", "/statistics" %></li>
         <% end %>
         
         <div class="pull-right">
@@ -27,8 +34,14 @@
           <% if session["user_id"].present? %>
             <li><%= link_to "Sign Out", "/logout" %></li>
           <% end %>
+          <% if session["user_id"].present? %>
+          <li class="pull-right"><%= link_to "Hi,  #{User.find_by(id: session["user_id"]).name}", "/users/#{session["user_id"]}" %></li>
+        <% end %>
         </div>
+        <br>
+        
       </ul>
+
     </navbar>
 
     <% if notice.present? %>

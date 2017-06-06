@@ -1,0 +1,29 @@
+<% currentTime = Time.new(2017, 6, 3) %>
+
+ <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>User</th>
+        <th>Restaurant</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @all_reservation.each do |reservation| %>
+
+        <tr>
+            <td><%= link_to "Delete", "/reservations/#{reservation[:id]}", method: 'delete' %>
+            <td><%= reservation[:user].name %>
+            <td><%= reservation[:restaurant].name %>
+            <td><%= reservation[:date] %>
+            <td><%= reservation[:time] %>
+            <td><%= reservation[:size] %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
